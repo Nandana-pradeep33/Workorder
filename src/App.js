@@ -17,6 +17,10 @@ import Assign from './Components/Assign';
 import ViewAssign from './Components/ViewAssign';
 
 
+
+import ViewLead from './Components/ViewLead';
+
+
 function App() {
   return (
     <Router>
@@ -34,6 +38,12 @@ function App() {
         <Route path='/admin/viewem'  element={<ViewEmployee/>}/>
         <Route path='/admin/assign' element={<Assign/>}/>
         <Route path='/admin/viewas' element={<ViewAssign/>}/>
+
+
+
+        <Route path='/admin1/viewlead' element={<ViewLead/>}/>
+
+
         
       </Routes>
     </Router>
