@@ -19,6 +19,7 @@ import ViewAssign from './Components/ViewAssign';
 
 
 import ViewLead from './Components/ViewLead';
+import ViewProposal from './Components/ViewProposal';
 
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
         <Route path='/admin/viewas' element={<ViewAssign/>}/>
 
 
-
+        <Route path='/user/viewproposal' element={<ViewProposal/>}/>
         <Route path='/admin1/viewlead' element={<ViewLead/>}/>
 
 

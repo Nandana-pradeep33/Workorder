@@ -33,34 +33,21 @@ const Project = () => {
  
 
   const handleChange = (e) => {
-
     const { name, value } = e.target;
-
     if (name === 'type1') {
-
       if (value === 'other') {
-
         setIsOtherSelected(true);
-
-        setProjectDetails({ ...projectDetails, [name]: '' });
-
+        setOtherType(''); // Reset otherType when 'other' is selected
       } else {
-
         setIsOtherSelected(false);
-
+        setOtherType(''); // Reset otherType when 'other' is not selected
         setProjectDetails({ ...projectDetails, [name]: value });
-
       }
-
     } else {
-
       setProjectDetails({ ...projectDetails, [name]: value });
-
     }
-
   };
-
- 
+  
 
   const handleOtherTypeChange = (e) => {
 
@@ -73,33 +60,24 @@ const Project = () => {
  
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
-
+    const finalProjectDetails = {
+      ...projectDetails,
+      type1: isOtherSelected ? otherType : projectDetails.type1,
+    };
+  
     try {
-
-      const response = await axios.post('http://localhost/myapp_backend/project.php', projectDetails);
-
+      const response = await axios.post('http://localhost/myapp_backend/project.php', finalProjectDetails);
       if (response.data.success) {
-
         alert(response.data.message);
-
-        navigate('/some-route'); // Redirect to a different page if needed
-
       } else {
-
         setErrorMessage(response.data.message);
-
       }
-
     } catch (error) {
-
       alert('Error adding project');
-
     }
-
   };
-
+  
  
 
   return (
@@ -142,11 +120,11 @@ const Project = () => {
 
                   <option value="">Select type</option>
 
-                  <option value="waste">Network</option>
+                  <option value="Network">Network</option>
 
-                  <option value="water">Service</option>
+                  <option value="Service">Service</option>
 
-                  <option value="electricity">Outsourcing</option>
+                  <option value="Outsourcing">Outsourcing</option>
 
                   <option value="other">Other</option>
 

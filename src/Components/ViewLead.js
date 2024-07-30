@@ -56,10 +56,11 @@ const ViewLead = () => {
           </tr>
         </thead>
         <tbody>
+       {/*${proposal.existing === 'no' ? 'bg-yellow-100' : ''}*/}
           {proposals.map((proposal) => (
-            <tr key={proposal.Proposal_ID} className={`bg-white border-b dark:bg-gray-800 dark:border-gray-700 ${proposal.viewed === 0 ? 'bg-yellow-100' : ''}`}>
+            <tr key={proposal.Proposal_ID} className={`bg-white border-b dark:bg-gray-800 dark:border-gray-700 `}>
               {columns.map((column) => (
-                <td key={column} className="px-6 py-4">
+                <td key={proposal.existing} className={`px-6 py-4 ${column === 'existing' && proposal[column] === 'no' ? 'border-2 border-yellow-500' : ''}`}>
                   {proposal[column]}
                 </td>
               ))}
